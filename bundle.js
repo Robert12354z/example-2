@@ -21457,6 +21457,18 @@
   var import_react = __toESM(require_react());
   var DONATE_URL = "#donate";
   var CANDIDATE_PHOTO = "./wc-photo.webp";
+  var IMGS = {
+    communityGathering: "https://images.unsplash.com/photo-1550096141-1b21804f1812?w=1200&q=80&auto=format&fit=crop",
+    kidPlayground: "https://images.unsplash.com/photo-1615448890840-60e6663fa46e?w=800&q=80&auto=format&fit=crop",
+    communityGroup: "https://images.unsplash.com/photo-1569292567773-229e2b7521ee?w=1200&q=80&auto=format&fit=crop",
+    aerialNeighborhood: "https://images.unsplash.com/photo-1499631507243-7290571550ed?w=1200&q=80&auto=format&fit=crop",
+    neighborsTalking: "https://images.unsplash.com/photo-1651514645933-c26e0eb4ace3?w=1200&q=80&auto=format&fit=crop",
+    neighborhoodGrid: "https://images.unsplash.com/photo-1556231673-79c47d27cde0?w=1200&q=80&auto=format&fit=crop",
+    kidsPlayground2: "https://images.unsplash.com/photo-1551368732-1151c92ca810?w=800&q=80&auto=format&fit=crop",
+    communityJoy: "https://images.unsplash.com/photo-1569292567777-e5d61a759322?w=1200&q=80&auto=format&fit=crop",
+    volunteersFood: "https://images.unsplash.com/photo-1628717341663-0007b0ee2597?w=1200&q=80&auto=format&fit=crop",
+    familyMoment: "https://images.unsplash.com/photo-1519031848557-f6f8c56cb463?w=800&q=80&auto=format&fit=crop"
+  };
   var C = {
     canvas: "#0B1F4F",
     canvasDeep: "#060D24",
@@ -21600,6 +21612,24 @@
   }
   .issue-item.is-active { opacity: 1; }
 
+  /* \u2500\u2500 Photo tiles \u2500\u2500 */
+  .photo-tile { overflow: hidden; }
+  .photo-tile img {
+    transition: transform 0.65s cubic-bezier(0.16,1,0.3,1);
+    display: block; width: 100%; height: 100%; object-fit: cover;
+  }
+  .photo-tile:hover img { transform: scale(1.05); }
+
+  @media (max-width: 700px) {
+    .community-grid { grid-template-columns: 1fr 1fr !important; height: 200px !important; }
+    .community-grid > div:last-child { display: none; }
+  }
+  @media (max-width: 480px) {
+    .community-grid { grid-template-columns: 1fr !important; height: auto !important; }
+    .community-grid > div { height: 180px; }
+    .community-grid > div:last-child { display: block; }
+  }
+
   /* \u2500\u2500 prefers-reduced-motion \u2500\u2500 */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -21675,6 +21705,63 @@
       color: C.canvasDeep,
       paddingRight: 0
     } }, items))));
+  }
+  function CommunityGallery() {
+    return /* @__PURE__ */ import_react.default.createElement("section", { style: { background: C.canvasDeep } }, /* @__PURE__ */ import_react.default.createElement("div", { className: "community-grid", style: {
+      display: "grid",
+      gridTemplateColumns: "1.5fr 1fr 1fr",
+      height: "clamp(240px,30vw,400px)",
+      overflow: "hidden"
+    } }, [
+      { src: IMGS.communityGathering, label: "Neighbors Together" },
+      { src: IMGS.kidPlayground, label: "Our Kids" },
+      { src: IMGS.communityGroup, label: "Our Streets" }
+    ].map((photo, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, className: "photo-tile", style: {
+      position: "relative",
+      borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.06)" : "none"
+    } }, /* @__PURE__ */ import_react.default.createElement("img", { src: photo.src, alt: photo.label }), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+      position: "absolute",
+      inset: 0,
+      background: "linear-gradient(to top, rgba(6,13,36,0.80) 0%, transparent 55%)",
+      pointerEvents: "none"
+    } }), /* @__PURE__ */ import_react.default.createElement("span", { style: {
+      position: "absolute",
+      bottom: 14,
+      left: 16,
+      fontFamily: "'Barlow Condensed', sans-serif",
+      fontSize: 12,
+      fontWeight: 700,
+      textTransform: "uppercase",
+      letterSpacing: "0.09em",
+      color: "rgba(255,255,255,0.55)"
+    } }, photo.label)))), /* @__PURE__ */ import_react.default.createElement("div", { style: { padding: "clamp(44px,6vw,72px) clamp(20px,5vw,80px)" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: {
+      maxWidth: 1280,
+      margin: "0 auto",
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
+      gap: 48,
+      alignItems: "center"
+    } }, /* @__PURE__ */ import_react.default.createElement("div", { "data-blur": true, style: {
+      fontFamily: "'Barlow Condensed', sans-serif",
+      fontSize: "clamp(36px,5vw,62px)",
+      fontWeight: 900,
+      textTransform: "uppercase",
+      letterSpacing: "0.01em",
+      color: C.textLight,
+      lineHeight: 1
+    } }, "West Covina", /* @__PURE__ */ import_react.default.createElement("br", null), /* @__PURE__ */ import_react.default.createElement("span", { style: {
+      background: `linear-gradient(135deg, ${C.gold}, #E08A3C)`,
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      backgroundClip: "text"
+    } }, "Is Home")), /* @__PURE__ */ import_react.default.createElement("p", { "data-reveal": true, style: {
+      fontFamily: "'IBM Plex Serif', serif",
+      fontStyle: "italic",
+      fontSize: "clamp(16px,1.8vw,20px)",
+      lineHeight: 1.74,
+      color: C.textMuted,
+      margin: 0
+    } }, "These are the streets, parks, and families Jimmy Lima has known his entire life. When he fights at City Hall, he fights for the faces in these photos."))));
   }
   function SpotCard({ children, style }) {
     const ref = (0, import_react.useRef)(null);
@@ -22163,7 +22250,7 @@
   ];
   function Home({ go }) {
     useReveal();
-    return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement(Hero, { go }), /* @__PURE__ */ import_react.default.createElement(Marquee, null), /* @__PURE__ */ import_react.default.createElement("section", { style: { padding: "clamp(80px,10vw,140px) clamp(20px,5vw,80px)", background: C.canvas } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { maxWidth: 1280, margin: "0 auto" } }, /* @__PURE__ */ import_react.default.createElement(SHead, { eyebrow: "Platform", title: "What Jimmy Stands For" }), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 20, marginBottom: 36 } }, ISSUES_PREVIEW.map((item, i) => /* @__PURE__ */ import_react.default.createElement(SpotCard, { key: item.title }, /* @__PURE__ */ import_react.default.createElement("div", { "data-reveal": true, "data-delay": `${i * 0.1}` }, /* @__PURE__ */ import_react.default.createElement("span", { style: {
+    return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement(Hero, { go }), /* @__PURE__ */ import_react.default.createElement(Marquee, null), /* @__PURE__ */ import_react.default.createElement(CommunityGallery, null), /* @__PURE__ */ import_react.default.createElement("section", { style: { padding: "clamp(80px,10vw,140px) clamp(20px,5vw,80px)", background: C.canvas } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { maxWidth: 1280, margin: "0 auto" } }, /* @__PURE__ */ import_react.default.createElement(SHead, { eyebrow: "Platform", title: "What Jimmy Stands For" }), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 20, marginBottom: 36 } }, ISSUES_PREVIEW.map((item, i) => /* @__PURE__ */ import_react.default.createElement(SpotCard, { key: item.title }, /* @__PURE__ */ import_react.default.createElement("div", { "data-reveal": true, "data-delay": `${i * 0.1}` }, /* @__PURE__ */ import_react.default.createElement("span", { style: {
       fontFamily: "'Inter', sans-serif",
       fontSize: 10,
       fontWeight: 700,
@@ -22409,7 +22496,7 @@
   }
   function About() {
     useReveal();
-    return /* @__PURE__ */ import_react.default.createElement(PageShell, { eyebrow: "About", title: "Meet Jimmy Lima", lightBody: true }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 64, alignItems: "start", marginBottom: 80 } }, /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("h2", { "data-blur": true, style: {
+    return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement(PageShell, { eyebrow: "About", title: "Meet Jimmy Lima", lightBody: true }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 64, alignItems: "start", marginBottom: 80 } }, /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("h2", { "data-blur": true, style: {
       fontFamily: "'Barlow Condensed', sans-serif",
       fontSize: "clamp(28px,3.5vw,44px)",
       fontWeight: 800,
@@ -22444,7 +22531,29 @@
       lineHeight: 1.72,
       color: C.textMuted,
       margin: 0
-    } }, v.text)))))));
+    } }, v.text))))))), /* @__PURE__ */ import_react.default.createElement("section", { style: { background: C.canvasDeep, padding: 0, overflow: "hidden" } }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(3,1fr)", height: "clamp(180px,22vw,300px)" } }, [
+      { src: IMGS.communityJoy, label: "Our People" },
+      { src: IMGS.aerialNeighborhood, label: "Our Neighborhood" },
+      { src: IMGS.familyMoment, label: "Our Families" }
+    ].map((p, i) => /* @__PURE__ */ import_react.default.createElement("div", { key: i, className: "photo-tile", style: {
+      position: "relative",
+      borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.06)" : "none"
+    } }, /* @__PURE__ */ import_react.default.createElement("img", { src: p.src, alt: p.label }), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+      position: "absolute",
+      inset: 0,
+      background: "linear-gradient(to top, rgba(6,13,36,0.70) 0%, transparent 55%)",
+      pointerEvents: "none"
+    } }), /* @__PURE__ */ import_react.default.createElement("span", { style: {
+      position: "absolute",
+      bottom: 12,
+      left: 14,
+      fontFamily: "'Barlow Condensed', sans-serif",
+      fontSize: 12,
+      fontWeight: 700,
+      textTransform: "uppercase",
+      letterSpacing: "0.09em",
+      color: "rgba(255,255,255,0.55)"
+    } }, p.label))))));
   }
   var ISSUES_ALL = [
     {
@@ -22453,6 +22562,7 @@
       tag: "Housing",
       tagColor: C.gold,
       stat: { n: "40%", label: "Rent increase in 5 years" },
+      img: IMGS.aerialNeighborhood,
       paras: [
         "The housing crisis is pricing out the families who built West Covina. Rents have increased 40% in five years while wages have barely kept pace.",
         "Jimmy will push for community benefit agreements on new developments, expand the city's affordable housing trust fund, and fight against displacement of long-term residents.",
@@ -22465,6 +22575,7 @@
       tag: "Education",
       tagColor: C.sky,
       stat: { n: "1 in 3", label: "Students qualify for free lunch" },
+      img: IMGS.kidsPlayground2,
       paras: [
         "West Covina's schools deserve more than aging buildings and underpaid educators. Every child in District 5 deserves a world-class education \u2014 full stop.",
         "Jimmy will prioritize city funding for after-school programs, mental health counselors in every school, and modernizing facilities that haven't been updated in decades.",
@@ -22477,6 +22588,7 @@
       tag: "Safety",
       tagColor: C.salmon,
       stat: { n: "28%", label: "Rise in property crime since 2020" },
+      img: IMGS.neighborsTalking,
       paras: [
         "Safety is a right, not a privilege. Every family in District 5 should feel secure in their home, on their streets, and in their parks.",
         "Jimmy believes in community-centered public safety \u2014 investing in mental health crisis response, neighborhood watch coordination, and youth programming.",
@@ -22489,6 +22601,7 @@
       tag: "Economy",
       tagColor: "#9FE870",
       stat: { n: "2,400+", label: "Small businesses in West Covina" },
+      img: IMGS.communityGathering,
       paras: [
         "West Covina's small businesses are the backbone of District 5. They employ our neighbors, serve our community, and define the character of our streets.",
         "Jimmy will fight for streamlined permitting, a dedicated small business liaison at City Hall, and local hiring preferences on city contracts.",
@@ -22501,6 +22614,7 @@
       tag: "Environment",
       tagColor: "#5FF0CC",
       stat: { n: "18", label: "Parks in District 5 needing upgrades" },
+      img: IMGS.neighborhoodGrid,
       paras: [
         "Our parks, air quality, and green spaces matter \u2014 especially in communities closest to industrial corridors.",
         "Jimmy will champion tree-planting programs, push for expanded EV charging infrastructure, and fight to clean up contaminated sites that have been ignored for too long.",
@@ -22635,7 +22749,14 @@
         lineHeight: 1.78,
         color: "rgba(255,255,255,0.82)",
         margin: "0 0 20px"
-      } }, p))
+      } }, p)),
+      issue.img && /* @__PURE__ */ import_react.default.createElement("div", { className: "photo-tile", style: {
+        marginTop: 8,
+        borderRadius: 14,
+        overflow: "hidden",
+        height: 220,
+        border: "1px solid rgba(255,255,255,0.07)"
+      } }, /* @__PURE__ */ import_react.default.createElement("img", { src: issue.img, alt: issue.title }))
     )))));
   }
   var ALL_ENDORSEMENTS = [
@@ -22654,7 +22775,41 @@
   ];
   function Endorsements() {
     useReveal();
-    return /* @__PURE__ */ import_react.default.createElement(PageShell, { eyebrow: "Endorsements & Community", title: "Standing With Jimmy" }, /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))", gap: 20, marginBottom: 64 } }, ALL_ENDORSEMENTS.map((e, i) => /* @__PURE__ */ import_react.default.createElement(
+    return /* @__PURE__ */ import_react.default.createElement(PageShell, { eyebrow: "Endorsements & Community", title: "Standing With Jimmy" }, /* @__PURE__ */ import_react.default.createElement("div", { "data-reveal": true, className: "photo-tile", style: {
+      borderRadius: 20,
+      overflow: "hidden",
+      height: "clamp(200px,28vw,340px)",
+      marginBottom: 52,
+      position: "relative",
+      border: "1px solid rgba(255,255,255,0.07)"
+    } }, /* @__PURE__ */ import_react.default.createElement("img", { src: IMGS.communityJoy, alt: "West Covina community" }), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+      position: "absolute",
+      inset: 0,
+      background: "linear-gradient(to right, rgba(6,13,36,0.80) 0%, rgba(6,13,36,0.20) 60%, transparent 100%)",
+      pointerEvents: "none"
+    } }), /* @__PURE__ */ import_react.default.createElement("div", { style: {
+      position: "absolute",
+      inset: 0,
+      display: "flex",
+      alignItems: "center",
+      padding: "0 clamp(20px,4vw,52px)"
+    } }, /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("p", { style: {
+      fontFamily: "'Barlow Condensed', sans-serif",
+      fontSize: "clamp(22px,3.5vw,42px)",
+      fontWeight: 900,
+      textTransform: "uppercase",
+      lineHeight: 1.1,
+      margin: 0,
+      color: C.gold
+    } }, "Endorsed By"), /* @__PURE__ */ import_react.default.createElement("p", { style: {
+      fontFamily: "'Barlow Condensed', sans-serif",
+      fontSize: "clamp(22px,3.5vw,42px)",
+      fontWeight: 900,
+      textTransform: "uppercase",
+      lineHeight: 1.1,
+      margin: 0,
+      color: C.textLight
+    } }, "Our Community")))), /* @__PURE__ */ import_react.default.createElement("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))", gap: 20, marginBottom: 64 } }, ALL_ENDORSEMENTS.map((e, i) => /* @__PURE__ */ import_react.default.createElement(
       "div",
       {
         key: e.name,
@@ -22813,7 +22968,13 @@
         onBlur: blur
       },
       ["Knock on doors", "Make phone calls", "Host a house party", "Put up yard signs", "Donate", "Other"].map((o) => /* @__PURE__ */ import_react.default.createElement("option", { key: o, style: { background: C.canvas } }, o))
-    )), /* @__PURE__ */ import_react.default.createElement(MagnetBtn, { spark: true, style: { alignSelf: "flex-start", fontSize: 16, padding: "16px 34px" } }, "Count Me In \u2192")), /* @__PURE__ */ import_react.default.createElement("div", { "data-reveal": "right" }, /* @__PURE__ */ import_react.default.createElement("h3", { style: {
+    )), /* @__PURE__ */ import_react.default.createElement(MagnetBtn, { spark: true, style: { alignSelf: "flex-start", fontSize: 16, padding: "16px 34px" } }, "Count Me In \u2192")), /* @__PURE__ */ import_react.default.createElement("div", { "data-reveal": "right" }, /* @__PURE__ */ import_react.default.createElement("div", { className: "photo-tile", style: {
+      borderRadius: 16,
+      overflow: "hidden",
+      marginBottom: 32,
+      height: 220,
+      border: "1px solid rgba(255,255,255,0.08)"
+    } }, /* @__PURE__ */ import_react.default.createElement("img", { src: IMGS.volunteersFood, alt: "Community volunteers" })), /* @__PURE__ */ import_react.default.createElement("h3", { style: {
       fontFamily: "'Barlow Condensed', sans-serif",
       fontSize: 26,
       fontWeight: 800,
