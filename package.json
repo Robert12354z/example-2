@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Jimmy Lima Campaign Site — Second Example",
   "scripts": {
-    "build": "esbuild campaign.tsx --bundle --outfile=bundle.js --loader:.tsx=tsx --loader:.ts=ts --loader:.webp=file --external:three",
-    "watch": "esbuild campaign.tsx --bundle --outfile=bundle.js --loader:.tsx=tsx --loader:.ts=ts --loader:.webp=file --external:three --watch"
+    "build": "esbuild entry.tsx --bundle --outfile=bundle.js --loader:.tsx=tsx --loader:.ts=ts --loader:.webp=file --external:three",
+    "watch": "esbuild entry.tsx --bundle --outfile=bundle.js --loader:.tsx=tsx --loader:.ts=ts --loader:.webp=file --external:three --watch"
   },
   "dependencies": {
     "react": "^19.2.7",
